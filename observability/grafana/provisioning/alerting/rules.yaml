@@ -1,0 +1,91 @@
+apiVersion: 1
+
+groups:
+  - orgId: 1
+    name: "Order Tracker Alerts"
+    folder: "Order Tracker"
+    interval: 1m
+    rules:
+      - uid: http-5xx-error-alert
+        title: "HTTP 5xx Error Alert"
+        condition: C
+        data:
+          - refId: A
+            queryType: ""
+            relativeTimeRange:
+              from: 300
+              to: 0
+            datasourceUid: prometheus
+            model:
+              editorMode: code
+              expr: sum by (route) (rate(http_requests_total{status_code=~"5.."}[5m]))
+              instant: false
+              range: true
+              refId: A
+          - refId: B
+            queryType: ""
+            relativeTimeRange:
+              from: 300
+              to: 0
+            datasourceUid: __expr__
+            model:
+              conditions:
+                - evaluator:
+                    params: []
+                    type: gt
+                  operator:
+                    type: and
+                  query:
+                    params:
+                      - B
+                  reducer:
+                    params: []
+                    type: last
+                  type: query
+              datasource:
+                name: Expression
+                type: __expr__
+                uid: __expr__
+              expression: A
+              reducer: last
+              type: reduce
+              refId: B
+          - refId: C
+            queryType: ""
+            relativeTimeRange:
+              from: 300
+              to: 0
+            datasourceUid: __expr__
+            model:
+              conditions:
+                - evaluator:
+                    params:
+                      - 0
+                    type: gt
+                  operator:
+                    type: and
+                  query:
+                    params:
+                      - C
+                  reducer:
+                    params: []
+                    type: last
+                  type: query
+              datasource:
+                name: Expression
+                type: __expr__
+                uid: __expr__
+              expression: B
+              type: threshold
+              refId: C
+        noDataState: OK
+        execErrState: Error
+        for: 1m
+        annotations:
+          summary: "5xx server errors detected on {{ $labels.route }}"
+          description: "Endpoint {{ $labels.route }} returned 5xx responses in the last 5 minutes. Dashboard: http://localhost:3000/d/order-tracker-metrics/order-tracker-requests-and-errors"
+          endpoint: "{{ $labels.route }}"
+          time_window: "5m"
+          dashboard_link: "http://localhost:3000/d/order-tracker-metrics/order-tracker-requests-and-errors"
+        labels:
+          severity: critical

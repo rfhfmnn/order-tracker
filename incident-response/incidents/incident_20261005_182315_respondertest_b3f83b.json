@@ -1,0 +1,1364 @@
+{
+  "incident_id": "incident_20261005_182315_respondertest_b3f83b",
+  "timestamp": "2026-10-05T18:23:15.422677+00:00",
+  "affected_endpoint": "unknown",
+  "alert": {
+    "name": "ResponderTest",
+    "endpoint": "unknown",
+    "status": "firing",
+    "severity": "critical",
+    "time_window": "5m",
+    "dashboard_link": "",
+    "description": "",
+    "summary": "Test notification; no incident to fix",
+    "starts_at": "2026-10-05T18:23:14.958815+00:00",
+    "raw_payload": {
+      "alerts": [
+        {
+          "status": "firing",
+          "labels": {
+            "alertname": "ResponderTest",
+            "test": "true"
+          },
+          "annotations": {
+            "summary": "Test notification; no incident to fix"
+          }
+        }
+      ]
+    }
+  },
+  "evidence": {
+    "collected_at": "2026-10-05T18:23:15.420392+00:00",
+    "service_name": "order-tracker",
+    "affected_endpoint": "unknown",
+    "time_window_seconds": 3600,
+    "total_logs": 37,
+    "error_logs_count": 12,
+    "logs": [
+      {
+        "timestamp": "2026-10-05T17:33:49.819804+00:00",
+        "timestamp_ns": "1791221629819804160",
+        "level": "INFO",
+        "message": "Looking up order: express-1002",
+        "trace_id": "fc91ab1f15cf1beddffa227a76cd29a7",
+        "span_id": "1b8b52c04bbdc2c7",
+        "service": "order-tracker",
+        "source": {
+          "file": "/app/app/main.py",
+          "function": "get_order",
+          "line": "156"
+        }
+      },
+      {
+        "timestamp": "2026-10-05T17:33:49.836474+00:00",
+        "timestamp_ns": "1791221629836473856",
+        "level": "INFO",
+        "message": "Found order express-1002: status=preparing, priority=express",
+        "trace_id": "fc91ab1f15cf1beddffa227a76cd29a7",
+        "span_id": "1b8b52c04bbdc2c7",
+        "service": "order-tracker",
+        "source": {
+          "file": "/app/app/main.py",
+          "function": "get_order",
+          "line": "172"
+        }
+      },
+      {
+        "timestamp": "2026-10-05T17:33:49.839731+00:00",
+        "timestamp_ns": "1791221629839730688",
+        "level": "ERROR",
+        "message": "Error retrieving order details for express-1002: day is out of range for month",
+        "trace_id": "fc91ab1f15cf1beddffa227a76cd29a7",
+        "span_id": "1b8b52c04bbdc2c7",
+        "service": "order-tracker",
+        "exception": {
+          "type": "ValueError",
+          "message": "day is out of range for month",
+          "stacktrace": "Traceback (most recent call last):\n  File \"/app/app/main.py\", line 174, in get_order\n    return order_detail(row)\n           ^^^^^^^^^^^^^^^^^\n  File \"/app/app/main.py\", line 67, in order_detail\n    estimated_at = placed_at.replace(day=placed_at.day + 2)\n                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nValueError: day is out of range for month\n"
+        },
+        "source": {
+          "file": "/app/app/main.py",
+          "function": "get_order",
+          "line": "179"
+        }
+      },
+      {
+        "timestamp": "2026-10-05T17:36:17.172788+00:00",
+        "timestamp_ns": "1791221777172787968",
+        "level": "INFO",
+        "message": "Looking up order: express-1002",
+        "trace_id": "c2aeff962e550dbd81e66a97aa544514",
+        "span_id": "d2d472298662f339",
+        "service": "order-tracker",
+        "source": {
+          "file": "/app/app/main.py",
+          "function": "get_order",
+          "line": "156"
+        }
+      },
+      {
+        "timestamp": "2026-10-05T17:36:17.174090+00:00",
+        "timestamp_ns": "1791221777174090496",
+        "level": "INFO",
+        "message": "Found order express-1002: status=preparing, priority=express",
+        "trace_id": "c2aeff962e550dbd81e66a97aa544514",
+        "span_id": "d2d472298662f339",
+        "service": "order-tracker",
+        "source": {
+          "file": "/app/app/main.py",
+          "function": "get_order",
+          "line": "172"
+        }
+      },
+      {
+        "timestamp": "2026-10-05T17:36:17.175630+00:00",
+        "timestamp_ns": "1791221777175630336",
+        "level": "ERROR",
+        "message": "Error retrieving order details for express-1002: day is out of range for month",
+        "trace_id": "c2aeff962e550dbd81e66a97aa544514",
+        "span_id": "d2d472298662f339",
+        "service": "order-tracker",
+        "exception": {
+          "type": "ValueError",
+          "message": "day is out of range for month",
+          "stacktrace": "Traceback (most recent call last):\n  File \"/app/app/main.py\", line 174, in get_order\n    return order_detail(row)\n           ^^^^^^^^^^^^^^^^^\n  File \"/app/app/main.py\", line 67, in order_detail\n    estimated_at = placed_at.replace(day=placed_at.day + 2)\n                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nValueError: day is out of range for month\n"
+        },
+        "source": {
+          "file": "/app/app/main.py",
+          "function": "get_order",
+          "line": "179"
+        }
+      },
+      {
+        "timestamp": "2026-10-05T17:36:17.290033+00:00",
+        "timestamp_ns": "1791221777290032896",
+        "level": "INFO",
+        "message": "Looking up order: express-1002",
+        "trace_id": "25858ce4dde1e8d762cb64a633d5d8ba",
+        "span_id": "442855f7a332b17b",
+        "service": "order-tracker",
+        "source": {
+          "file": "/app/app/main.py",
+          "function": "get_order",
+          "line": "156"
+        }
+      },
+      {
+        "timestamp": "2026-10-05T17:36:17.290694+00:00",
+        "timestamp_ns": "1791221777290693632",
+        "level": "INFO",
+        "message": "Found order express-1002: status=preparing, priority=express",
+        "trace_id": "25858ce4dde1e8d762cb64a633d5d8ba",
+        "span_id": "442855f7a332b17b",
+        "service": "order-tracker",
+        "source": {
+          "file": "/app/app/main.py",
+          "function": "get_order",
+          "line": "172"
+        }
+      },
+      {
+        "timestamp": "2026-10-05T17:36:17.291706+00:00",
+        "timestamp_ns": "1791221777291706368",
+        "level": "ERROR",
+        "message": "Error retrieving order details for express-1002: day is out of range for month",
+        "trace_id": "25858ce4dde1e8d762cb64a633d5d8ba",
+        "span_id": "442855f7a332b17b",
+        "service": "order-tracker",
+        "exception": {
+          "type": "ValueError",
+          "message": "day is out of range for month",
+          "stacktrace": "Traceback (most recent call last):\n  File \"/app/app/main.py\", line 174, in get_order\n    return order_detail(row)\n           ^^^^^^^^^^^^^^^^^\n  File \"/app/app/main.py\", line 67, in order_detail\n    estimated_at = placed_at.replace(day=placed_at.day + 2)\n                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nValueError: day is out of range for month\n"
+        },
+        "source": {
+          "file": "/app/app/main.py",
+          "function": "get_order",
+          "line": "179"
+        }
+      },
+      {
+        "timestamp": "2026-10-05T17:36:17.406459+00:00",
+        "timestamp_ns": "1791221777406459136",
+        "level": "INFO",
+        "message": "Looking up order: express-1002",
+        "trace_id": "77a0a7c015b86bc5285cdbc30fd83915",
+        "span_id": "c2a2640f70001f58",
+        "service": "order-tracker",
+        "source": {
+          "file": "/app/app/main.py",
+          "function": "get_order",
+          "line": "156"
+        }
+      },
+      {
+        "timestamp": "2026-10-05T17:36:17.407409+00:00",
+        "timestamp_ns": "1791221777407409152",
+        "level": "INFO",
+        "message": "Found order express-1002: status=preparing, priority=express",
+        "trace_id": "77a0a7c015b86bc5285cdbc30fd83915",
+        "span_id": "c2a2640f70001f58",
+        "service": "order-tracker",
+        "source": {
+          "file": "/app/app/main.py",
+          "function": "get_order",
+          "line": "172"
+        }
+      },
+      {
+        "timestamp": "2026-10-05T17:36:17.407788+00:00",
+        "timestamp_ns": "1791221777407787776",
+        "level": "ERROR",
+        "message": "Error retrieving order details for express-1002: day is out of range for month",
+        "trace_id": "77a0a7c015b86bc5285cdbc30fd83915",
+        "span_id": "c2a2640f70001f58",
+        "service": "order-tracker",
+        "exception": {
+          "type": "ValueError",
+          "message": "day is out of range for month",
+          "stacktrace": "Traceback (most recent call last):\n  File \"/app/app/main.py\", line 174, in get_order\n    return order_detail(row)\n           ^^^^^^^^^^^^^^^^^\n  File \"/app/app/main.py\", line 67, in order_detail\n    estimated_at = placed_at.replace(day=placed_at.day + 2)\n                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nValueError: day is out of range for month\n"
+        },
+        "source": {
+          "file": "/app/app/main.py",
+          "function": "get_order",
+          "line": "179"
+        }
+      },
+      {
+        "timestamp": "2026-10-05T17:36:17.521423+00:00",
+        "timestamp_ns": "1791221777521423104",
+        "level": "INFO",
+        "message": "Looking up order: express-1002",
+        "trace_id": "f701c2178d378a2f55ae7ae9f9f93b2f",
+        "span_id": "92921f902cb28dfb",
+        "service": "order-tracker",
+        "source": {
+          "file": "/app/app/main.py",
+          "function": "get_order",
+          "line": "156"
+        }
+      },
+      {
+        "timestamp": "2026-10-05T17:36:17.522073+00:00",
+        "timestamp_ns": "1791221777522072832",
+        "level": "INFO",
+        "message": "Found order express-1002: status=preparing, priority=express",
+        "trace_id": "f701c2178d378a2f55ae7ae9f9f93b2f",
+        "span_id": "92921f902cb28dfb",
+        "service": "order-tracker",
+        "source": {
+          "file": "/app/app/main.py",
+          "function": "get_order",
+          "line": "172"
+        }
+      },
+      {
+        "timestamp": "2026-10-05T17:36:17.522354+00:00",
+        "timestamp_ns": "1791221777522353920",
+        "level": "ERROR",
+        "message": "Error retrieving order details for express-1002: day is out of range for month",
+        "trace_id": "f701c2178d378a2f55ae7ae9f9f93b2f",
+        "span_id": "92921f902cb28dfb",
+        "service": "order-tracker",
+        "exception": {
+          "type": "ValueError",
+          "message": "day is out of range for month",
+          "stacktrace": "Traceback (most recent call last):\n  File \"/app/app/main.py\", line 174, in get_order\n    return order_detail(row)\n           ^^^^^^^^^^^^^^^^^\n  File \"/app/app/main.py\", line 67, in order_detail\n    estimated_at = placed_at.replace(day=placed_at.day + 2)\n                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nValueError: day is out of range for month\n"
+        },
+        "source": {
+          "file": "/app/app/main.py",
+          "function": "get_order",
+          "line": "179"
+        }
+      },
+      {
+        "timestamp": "2026-10-05T17:36:17.634405+00:00",
+        "timestamp_ns": "1791221777634405376",
+        "level": "INFO",
+        "message": "Looking up order: express-1002",
+        "trace_id": "bb6040d06781b1e525ca80b5c272045d",
+        "span_id": "f34169821be30c1c",
+        "service": "order-tracker",
+        "source": {
+          "file": "/app/app/main.py",
+          "function": "get_order",
+          "line": "156"
+        }
+      },
+      {
+        "timestamp": "2026-10-05T17:36:17.634913+00:00",
+        "timestamp_ns": "1791221777634913024",
+        "level": "INFO",
+        "message": "Found order express-1002: status=preparing, priority=express",
+        "trace_id": "bb6040d06781b1e525ca80b5c272045d",
+        "span_id": "f34169821be30c1c",
+        "service": "order-tracker",
+        "source": {
+          "file": "/app/app/main.py",
+          "function": "get_order",
+          "line": "172"
+        }
+      },
+      {
+        "timestamp": "2026-10-05T17:36:17.635296+00:00",
+        "timestamp_ns": "1791221777635295744",
+        "level": "ERROR",
+        "message": "Error retrieving order details for express-1002: day is out of range for month",
+        "trace_id": "bb6040d06781b1e525ca80b5c272045d",
+        "span_id": "f34169821be30c1c",
+        "service": "order-tracker",
+        "exception": {
+          "type": "ValueError",
+          "message": "day is out of range for month",
+          "stacktrace": "Traceback (most recent call last):\n  File \"/app/app/main.py\", line 174, in get_order\n    return order_detail(row)\n           ^^^^^^^^^^^^^^^^^\n  File \"/app/app/main.py\", line 67, in order_detail\n    estimated_at = placed_at.replace(day=placed_at.day + 2)\n                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nValueError: day is out of range for month\n"
+        },
+        "source": {
+          "file": "/app/app/main.py",
+          "function": "get_order",
+          "line": "179"
+        }
+      },
+      {
+        "timestamp": "2026-10-05T17:36:17.748489+00:00",
+        "timestamp_ns": "1791221777748489472",
+        "level": "INFO",
+        "message": "Looking up order: express-1002",
+        "trace_id": "61d6cd1f5491034fe188dad8a3beca7f",
+        "span_id": "865f0736df80aba1",
+        "service": "order-tracker",
+        "source": {
+          "file": "/app/app/main.py",
+          "function": "get_order",
+          "line": "156"
+        }
+      },
+      {
+        "timestamp": "2026-10-05T17:36:17.749433+00:00",
+        "timestamp_ns": "1791221777749432832",
+        "level": "INFO",
+        "message": "Found order express-1002: status=preparing, priority=express",
+        "trace_id": "61d6cd1f5491034fe188dad8a3beca7f",
+        "span_id": "865f0736df80aba1",
+        "service": "order-tracker",
+        "source": {
+          "file": "/app/app/main.py",
+          "function": "get_order",
+          "line": "172"
+        }
+      },
+      {
+        "timestamp": "2026-10-05T17:36:17.750292+00:00",
+        "timestamp_ns": "1791221777750291968",
+        "level": "ERROR",
+        "message": "Error retrieving order details for express-1002: day is out of range for month",
+        "trace_id": "61d6cd1f5491034fe188dad8a3beca7f",
+        "span_id": "865f0736df80aba1",
+        "service": "order-tracker",
+        "exception": {
+          "type": "ValueError",
+          "message": "day is out of range for month",
+          "stacktrace": "Traceback (most recent call last):\n  File \"/app/app/main.py\", line 174, in get_order\n    return order_detail(row)\n           ^^^^^^^^^^^^^^^^^\n  File \"/app/app/main.py\", line 67, in order_detail\n    estimated_at = placed_at.replace(day=placed_at.day + 2)\n                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nValueError: day is out of range for month\n"
+        },
+        "source": {
+          "file": "/app/app/main.py",
+          "function": "get_order",
+          "line": "179"
+        }
+      },
+      {
+        "timestamp": "2026-10-05T17:36:17.865353+00:00",
+        "timestamp_ns": "1791221777865352960",
+        "level": "INFO",
+        "message": "Looking up order: express-1002",
+        "trace_id": "7b52c45ea97eeda48a2dbdf54a9a4a25",
+        "span_id": "71da801c033afd21",
+        "service": "order-tracker",
+        "source": {
+          "file": "/app/app/main.py",
+          "function": "get_order",
+          "line": "156"
+        }
+      },
+      {
+        "timestamp": "2026-10-05T17:36:17.866508+00:00",
+        "timestamp_ns": "1791221777866508032",
+        "level": "INFO",
+        "message": "Found order express-1002: status=preparing, priority=express",
+        "trace_id": "7b52c45ea97eeda48a2dbdf54a9a4a25",
+        "span_id": "71da801c033afd21",
+        "service": "order-tracker",
+        "source": {
+          "file": "/app/app/main.py",
+          "function": "get_order",
+          "line": "172"
+        }
+      },
+      {
+        "timestamp": "2026-10-05T17:36:17.867398+00:00",
+        "timestamp_ns": "1791221777867397632",
+        "level": "ERROR",
+        "message": "Error retrieving order details for express-1002: day is out of range for month",
+        "trace_id": "7b52c45ea97eeda48a2dbdf54a9a4a25",
+        "span_id": "71da801c033afd21",
+        "service": "order-tracker",
+        "exception": {
+          "type": "ValueError",
+          "message": "day is out of range for month",
+          "stacktrace": "Traceback (most recent call last):\n  File \"/app/app/main.py\", line 174, in get_order\n    return order_detail(row)\n           ^^^^^^^^^^^^^^^^^\n  File \"/app/app/main.py\", line 67, in order_detail\n    estimated_at = placed_at.replace(day=placed_at.day + 2)\n                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nValueError: day is out of range for month\n"
+        },
+        "source": {
+          "file": "/app/app/main.py",
+          "function": "get_order",
+          "line": "179"
+        }
+      },
+      {
+        "timestamp": "2026-10-05T17:36:17.980387+00:00",
+        "timestamp_ns": "1791221777980387328",
+        "level": "INFO",
+        "message": "Looking up order: express-1002",
+        "trace_id": "1e0fa4ff9d4e73264fcbe454b6c0c6f0",
+        "span_id": "469d18055093d8b4",
+        "service": "order-tracker",
+        "source": {
+          "file": "/app/app/main.py",
+          "function": "get_order",
+          "line": "156"
+        }
+      },
+      {
+        "timestamp": "2026-10-05T17:36:17.981929+00:00",
+        "timestamp_ns": "1791221777981929216",
+        "level": "INFO",
+        "message": "Found order express-1002: status=preparing, priority=express",
+        "trace_id": "1e0fa4ff9d4e73264fcbe454b6c0c6f0",
+        "span_id": "469d18055093d8b4",
+        "service": "order-tracker",
+        "source": {
+          "file": "/app/app/main.py",
+          "function": "get_order",
+          "line": "172"
+        }
+      },
+      {
+        "timestamp": "2026-10-05T17:36:17.982328+00:00",
+        "timestamp_ns": "1791221777982327808",
+        "level": "ERROR",
+        "message": "Error retrieving order details for express-1002: day is out of range for month",
+        "trace_id": "1e0fa4ff9d4e73264fcbe454b6c0c6f0",
+        "span_id": "469d18055093d8b4",
+        "service": "order-tracker",
+        "exception": {
+          "type": "ValueError",
+          "message": "day is out of range for month",
+          "stacktrace": "Traceback (most recent call last):\n  File \"/app/app/main.py\", line 174, in get_order\n    return order_detail(row)\n           ^^^^^^^^^^^^^^^^^\n  File \"/app/app/main.py\", line 67, in order_detail\n    estimated_at = placed_at.replace(day=placed_at.day + 2)\n                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nValueError: day is out of range for month\n"
+        },
+        "source": {
+          "file": "/app/app/main.py",
+          "function": "get_order",
+          "line": "179"
+        }
+      },
+      {
+        "timestamp": "2026-10-05T17:36:18.094098+00:00",
+        "timestamp_ns": "1791221778094097664",
+        "level": "INFO",
+        "message": "Looking up order: express-1002",
+        "trace_id": "f272c80fc36e1fbdf27ff26d44aa87a5",
+        "span_id": "f79bc40e4d9fb707",
+        "service": "order-tracker",
+        "source": {
+          "file": "/app/app/main.py",
+          "function": "get_order",
+          "line": "156"
+        }
+      },
+      {
+        "timestamp": "2026-10-05T17:36:18.094666+00:00",
+        "timestamp_ns": "1791221778094665728",
+        "level": "INFO",
+        "message": "Found order express-1002: status=preparing, priority=express",
+        "trace_id": "f272c80fc36e1fbdf27ff26d44aa87a5",
+        "span_id": "f79bc40e4d9fb707",
+        "service": "order-tracker",
+        "source": {
+          "file": "/app/app/main.py",
+          "function": "get_order",
+          "line": "172"
+        }
+      },
+      {
+        "timestamp": "2026-10-05T17:36:18.094964+00:00",
+        "timestamp_ns": "1791221778094963968",
+        "level": "ERROR",
+        "message": "Error retrieving order details for express-1002: day is out of range for month",
+        "trace_id": "f272c80fc36e1fbdf27ff26d44aa87a5",
+        "span_id": "f79bc40e4d9fb707",
+        "service": "order-tracker",
+        "exception": {
+          "type": "ValueError",
+          "message": "day is out of range for month",
+          "stacktrace": "Traceback (most recent call last):\n  File \"/app/app/main.py\", line 174, in get_order\n    return order_detail(row)\n           ^^^^^^^^^^^^^^^^^\n  File \"/app/app/main.py\", line 67, in order_detail\n    estimated_at = placed_at.replace(day=placed_at.day + 2)\n                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nValueError: day is out of range for month\n"
+        },
+        "source": {
+          "file": "/app/app/main.py",
+          "function": "get_order",
+          "line": "179"
+        }
+      },
+      {
+        "timestamp": "2026-10-05T17:36:18.205794+00:00",
+        "timestamp_ns": "1791221778205794048",
+        "level": "INFO",
+        "message": "Looking up order: express-1002",
+        "trace_id": "d84ff99f7961000dbac5520d6e5c5e02",
+        "span_id": "270957e96a5ce574",
+        "service": "order-tracker",
+        "source": {
+          "file": "/app/app/main.py",
+          "function": "get_order",
+          "line": "156"
+        }
+      },
+      {
+        "timestamp": "2026-10-05T17:36:18.206566+00:00",
+        "timestamp_ns": "1791221778206566144",
+        "level": "INFO",
+        "message": "Found order express-1002: status=preparing, priority=express",
+        "trace_id": "d84ff99f7961000dbac5520d6e5c5e02",
+        "span_id": "270957e96a5ce574",
+        "service": "order-tracker",
+        "source": {
+          "file": "/app/app/main.py",
+          "function": "get_order",
+          "line": "172"
+        }
+      },
+      {
+        "timestamp": "2026-10-05T17:36:18.206863+00:00",
+        "timestamp_ns": "1791221778206863104",
+        "level": "ERROR",
+        "message": "Error retrieving order details for express-1002: day is out of range for month",
+        "trace_id": "d84ff99f7961000dbac5520d6e5c5e02",
+        "span_id": "270957e96a5ce574",
+        "service": "order-tracker",
+        "exception": {
+          "type": "ValueError",
+          "message": "day is out of range for month",
+          "stacktrace": "Traceback (most recent call last):\n  File \"/app/app/main.py\", line 174, in get_order\n    return order_detail(row)\n           ^^^^^^^^^^^^^^^^^\n  File \"/app/app/main.py\", line 67, in order_detail\n    estimated_at = placed_at.replace(day=placed_at.day + 2)\n                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nValueError: day is out of range for month\n"
+        },
+        "source": {
+          "file": "/app/app/main.py",
+          "function": "get_order",
+          "line": "179"
+        }
+      },
+      {
+        "timestamp": "2026-10-05T17:41:28.981500+00:00",
+        "timestamp_ns": "1791222088981499648",
+        "level": "INFO",
+        "message": "Looking up order: standard-1002",
+        "trace_id": "1a2cf97defc3a474547e8392f91f37e6",
+        "span_id": "e86efd4119ce50b7",
+        "service": "order-tracker",
+        "source": {
+          "file": "/app/app/main.py",
+          "function": "get_order",
+          "line": "156"
+        }
+      },
+      {
+        "timestamp": "2026-10-05T17:41:28.995349+00:00",
+        "timestamp_ns": "1791222088995348736",
+        "level": "WARN",
+        "message": "Order not found: standard-1002",
+        "trace_id": "1a2cf97defc3a474547e8392f91f37e6",
+        "span_id": "e86efd4119ce50b7",
+        "service": "order-tracker",
+        "source": {
+          "file": "/app/app/main.py",
+          "function": "get_order",
+          "line": "164"
+        }
+      },
+      {
+        "timestamp": "2026-10-05T17:41:41.572634+00:00",
+        "timestamp_ns": "1791222101572634368",
+        "level": "INFO",
+        "message": "Looking up order: standard-1001",
+        "trace_id": "39df81422a39046ebf4e952d2fd0f64c",
+        "span_id": "51243757ac934369",
+        "service": "order-tracker",
+        "source": {
+          "file": "/app/app/main.py",
+          "function": "get_order",
+          "line": "156"
+        }
+      },
+      {
+        "timestamp": "2026-10-05T17:41:41.575279+00:00",
+        "timestamp_ns": "1791222101575278848",
+        "level": "INFO",
+        "message": "Found order standard-1001: status=received, priority=standard",
+        "trace_id": "39df81422a39046ebf4e952d2fd0f64c",
+        "span_id": "51243757ac934369",
+        "service": "order-tracker",
+        "source": {
+          "file": "/app/app/main.py",
+          "function": "get_order",
+          "line": "172"
+        }
+      }
+    ],
+    "error_logs": [
+      {
+        "timestamp": "2026-10-05T17:33:49.839731+00:00",
+        "timestamp_ns": "1791221629839730688",
+        "level": "ERROR",
+        "message": "Error retrieving order details for express-1002: day is out of range for month",
+        "trace_id": "fc91ab1f15cf1beddffa227a76cd29a7",
+        "span_id": "1b8b52c04bbdc2c7",
+        "service": "order-tracker",
+        "exception": {
+          "type": "ValueError",
+          "message": "day is out of range for month",
+          "stacktrace": "Traceback (most recent call last):\n  File \"/app/app/main.py\", line 174, in get_order\n    return order_detail(row)\n           ^^^^^^^^^^^^^^^^^\n  File \"/app/app/main.py\", line 67, in order_detail\n    estimated_at = placed_at.replace(day=placed_at.day + 2)\n                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nValueError: day is out of range for month\n"
+        },
+        "source": {
+          "file": "/app/app/main.py",
+          "function": "get_order",
+          "line": "179"
+        }
+      },
+      {
+        "timestamp": "2026-10-05T17:36:17.175630+00:00",
+        "timestamp_ns": "1791221777175630336",
+        "level": "ERROR",
+        "message": "Error retrieving order details for express-1002: day is out of range for month",
+        "trace_id": "c2aeff962e550dbd81e66a97aa544514",
+        "span_id": "d2d472298662f339",
+        "service": "order-tracker",
+        "exception": {
+          "type": "ValueError",
+          "message": "day is out of range for month",
+          "stacktrace": "Traceback (most recent call last):\n  File \"/app/app/main.py\", line 174, in get_order\n    return order_detail(row)\n           ^^^^^^^^^^^^^^^^^\n  File \"/app/app/main.py\", line 67, in order_detail\n    estimated_at = placed_at.replace(day=placed_at.day + 2)\n                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nValueError: day is out of range for month\n"
+        },
+        "source": {
+          "file": "/app/app/main.py",
+          "function": "get_order",
+          "line": "179"
+        }
+      },
+      {
+        "timestamp": "2026-10-05T17:36:17.291706+00:00",
+        "timestamp_ns": "1791221777291706368",
+        "level": "ERROR",
+        "message": "Error retrieving order details for express-1002: day is out of range for month",
+        "trace_id": "25858ce4dde1e8d762cb64a633d5d8ba",
+        "span_id": "442855f7a332b17b",
+        "service": "order-tracker",
+        "exception": {
+          "type": "ValueError",
+          "message": "day is out of range for month",
+          "stacktrace": "Traceback (most recent call last):\n  File \"/app/app/main.py\", line 174, in get_order\n    return order_detail(row)\n           ^^^^^^^^^^^^^^^^^\n  File \"/app/app/main.py\", line 67, in order_detail\n    estimated_at = placed_at.replace(day=placed_at.day + 2)\n                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nValueError: day is out of range for month\n"
+        },
+        "source": {
+          "file": "/app/app/main.py",
+          "function": "get_order",
+          "line": "179"
+        }
+      },
+      {
+        "timestamp": "2026-10-05T17:36:17.407788+00:00",
+        "timestamp_ns": "1791221777407787776",
+        "level": "ERROR",
+        "message": "Error retrieving order details for express-1002: day is out of range for month",
+        "trace_id": "77a0a7c015b86bc5285cdbc30fd83915",
+        "span_id": "c2a2640f70001f58",
+        "service": "order-tracker",
+        "exception": {
+          "type": "ValueError",
+          "message": "day is out of range for month",
+          "stacktrace": "Traceback (most recent call last):\n  File \"/app/app/main.py\", line 174, in get_order\n    return order_detail(row)\n           ^^^^^^^^^^^^^^^^^\n  File \"/app/app/main.py\", line 67, in order_detail\n    estimated_at = placed_at.replace(day=placed_at.day + 2)\n                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nValueError: day is out of range for month\n"
+        },
+        "source": {
+          "file": "/app/app/main.py",
+          "function": "get_order",
+          "line": "179"
+        }
+      },
+      {
+        "timestamp": "2026-10-05T17:36:17.522354+00:00",
+        "timestamp_ns": "1791221777522353920",
+        "level": "ERROR",
+        "message": "Error retrieving order details for express-1002: day is out of range for month",
+        "trace_id": "f701c2178d378a2f55ae7ae9f9f93b2f",
+        "span_id": "92921f902cb28dfb",
+        "service": "order-tracker",
+        "exception": {
+          "type": "ValueError",
+          "message": "day is out of range for month",
+          "stacktrace": "Traceback (most recent call last):\n  File \"/app/app/main.py\", line 174, in get_order\n    return order_detail(row)\n           ^^^^^^^^^^^^^^^^^\n  File \"/app/app/main.py\", line 67, in order_detail\n    estimated_at = placed_at.replace(day=placed_at.day + 2)\n                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nValueError: day is out of range for month\n"
+        },
+        "source": {
+          "file": "/app/app/main.py",
+          "function": "get_order",
+          "line": "179"
+        }
+      },
+      {
+        "timestamp": "2026-10-05T17:36:17.635296+00:00",
+        "timestamp_ns": "1791221777635295744",
+        "level": "ERROR",
+        "message": "Error retrieving order details for express-1002: day is out of range for month",
+        "trace_id": "bb6040d06781b1e525ca80b5c272045d",
+        "span_id": "f34169821be30c1c",
+        "service": "order-tracker",
+        "exception": {
+          "type": "ValueError",
+          "message": "day is out of range for month",
+          "stacktrace": "Traceback (most recent call last):\n  File \"/app/app/main.py\", line 174, in get_order\n    return order_detail(row)\n           ^^^^^^^^^^^^^^^^^\n  File \"/app/app/main.py\", line 67, in order_detail\n    estimated_at = placed_at.replace(day=placed_at.day + 2)\n                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nValueError: day is out of range for month\n"
+        },
+        "source": {
+          "file": "/app/app/main.py",
+          "function": "get_order",
+          "line": "179"
+        }
+      },
+      {
+        "timestamp": "2026-10-05T17:36:17.750292+00:00",
+        "timestamp_ns": "1791221777750291968",
+        "level": "ERROR",
+        "message": "Error retrieving order details for express-1002: day is out of range for month",
+        "trace_id": "61d6cd1f5491034fe188dad8a3beca7f",
+        "span_id": "865f0736df80aba1",
+        "service": "order-tracker",
+        "exception": {
+          "type": "ValueError",
+          "message": "day is out of range for month",
+          "stacktrace": "Traceback (most recent call last):\n  File \"/app/app/main.py\", line 174, in get_order\n    return order_detail(row)\n           ^^^^^^^^^^^^^^^^^\n  File \"/app/app/main.py\", line 67, in order_detail\n    estimated_at = placed_at.replace(day=placed_at.day + 2)\n                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nValueError: day is out of range for month\n"
+        },
+        "source": {
+          "file": "/app/app/main.py",
+          "function": "get_order",
+          "line": "179"
+        }
+      },
+      {
+        "timestamp": "2026-10-05T17:36:17.867398+00:00",
+        "timestamp_ns": "1791221777867397632",
+        "level": "ERROR",
+        "message": "Error retrieving order details for express-1002: day is out of range for month",
+        "trace_id": "7b52c45ea97eeda48a2dbdf54a9a4a25",
+        "span_id": "71da801c033afd21",
+        "service": "order-tracker",
+        "exception": {
+          "type": "ValueError",
+          "message": "day is out of range for month",
+          "stacktrace": "Traceback (most recent call last):\n  File \"/app/app/main.py\", line 174, in get_order\n    return order_detail(row)\n           ^^^^^^^^^^^^^^^^^\n  File \"/app/app/main.py\", line 67, in order_detail\n    estimated_at = placed_at.replace(day=placed_at.day + 2)\n                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nValueError: day is out of range for month\n"
+        },
+        "source": {
+          "file": "/app/app/main.py",
+          "function": "get_order",
+          "line": "179"
+        }
+      },
+      {
+        "timestamp": "2026-10-05T17:36:17.982328+00:00",
+        "timestamp_ns": "1791221777982327808",
+        "level": "ERROR",
+        "message": "Error retrieving order details for express-1002: day is out of range for month",
+        "trace_id": "1e0fa4ff9d4e73264fcbe454b6c0c6f0",
+        "span_id": "469d18055093d8b4",
+        "service": "order-tracker",
+        "exception": {
+          "type": "ValueError",
+          "message": "day is out of range for month",
+          "stacktrace": "Traceback (most recent call last):\n  File \"/app/app/main.py\", line 174, in get_order\n    return order_detail(row)\n           ^^^^^^^^^^^^^^^^^\n  File \"/app/app/main.py\", line 67, in order_detail\n    estimated_at = placed_at.replace(day=placed_at.day + 2)\n                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nValueError: day is out of range for month\n"
+        },
+        "source": {
+          "file": "/app/app/main.py",
+          "function": "get_order",
+          "line": "179"
+        }
+      },
+      {
+        "timestamp": "2026-10-05T17:36:18.094964+00:00",
+        "timestamp_ns": "1791221778094963968",
+        "level": "ERROR",
+        "message": "Error retrieving order details for express-1002: day is out of range for month",
+        "trace_id": "f272c80fc36e1fbdf27ff26d44aa87a5",
+        "span_id": "f79bc40e4d9fb707",
+        "service": "order-tracker",
+        "exception": {
+          "type": "ValueError",
+          "message": "day is out of range for month",
+          "stacktrace": "Traceback (most recent call last):\n  File \"/app/app/main.py\", line 174, in get_order\n    return order_detail(row)\n           ^^^^^^^^^^^^^^^^^\n  File \"/app/app/main.py\", line 67, in order_detail\n    estimated_at = placed_at.replace(day=placed_at.day + 2)\n                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nValueError: day is out of range for month\n"
+        },
+        "source": {
+          "file": "/app/app/main.py",
+          "function": "get_order",
+          "line": "179"
+        }
+      },
+      {
+        "timestamp": "2026-10-05T17:36:18.206863+00:00",
+        "timestamp_ns": "1791221778206863104",
+        "level": "ERROR",
+        "message": "Error retrieving order details for express-1002: day is out of range for month",
+        "trace_id": "d84ff99f7961000dbac5520d6e5c5e02",
+        "span_id": "270957e96a5ce574",
+        "service": "order-tracker",
+        "exception": {
+          "type": "ValueError",
+          "message": "day is out of range for month",
+          "stacktrace": "Traceback (most recent call last):\n  File \"/app/app/main.py\", line 174, in get_order\n    return order_detail(row)\n           ^^^^^^^^^^^^^^^^^\n  File \"/app/app/main.py\", line 67, in order_detail\n    estimated_at = placed_at.replace(day=placed_at.day + 2)\n                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nValueError: day is out of range for month\n"
+        },
+        "source": {
+          "file": "/app/app/main.py",
+          "function": "get_order",
+          "line": "179"
+        }
+      },
+      {
+        "timestamp": "2026-10-05T17:41:28.995349+00:00",
+        "timestamp_ns": "1791222088995348736",
+        "level": "WARN",
+        "message": "Order not found: standard-1002",
+        "trace_id": "1a2cf97defc3a474547e8392f91f37e6",
+        "span_id": "e86efd4119ce50b7",
+        "service": "order-tracker",
+        "source": {
+          "file": "/app/app/main.py",
+          "function": "get_order",
+          "line": "164"
+        }
+      }
+    ],
+    "total_traces": 13,
+    "traces": [
+      {
+        "trace_id": "25858ce4dde1e8d762cb64a633d5d8ba",
+        "spans_count": 1,
+        "spans": [
+          {
+            "span_id": "RChV96MysXs=",
+            "parent_span_id": null,
+            "name": "order_lookup",
+            "scope": "order-tracker",
+            "service": "order-tracker",
+            "duration_ms": 3.68,
+            "status": {
+              "code": "STATUS_CODE_ERROR",
+              "message": "ValueError: day is out of range for month"
+            },
+            "attributes": {
+              "order.id": "express-1002",
+              "route": "/api/orders/{order_id}",
+              "http.route": "/api/orders/{order_id}",
+              "order.found": true,
+              "order.status": "preparing",
+              "order.priority": "express",
+              "status_code": "500",
+              "http.status_code": "500"
+            },
+            "events": [
+              {
+                "name": "exception",
+                "attributes": {
+                  "exception.type": "ValueError",
+                  "exception.message": "day is out of range for month",
+                  "exception.stacktrace": "Traceback (most recent call last):\n  File \"/app/.venv/lib/python3.12/site-packages/opentelemetry/trace/__init__.py\", line 602, in use_span\n    yield span\n  File \"/app/.venv/lib/python3.12/site-packages/opentelemetry/sdk/trace/__init__.py\", line 1136, in start_as_current_span\n    yield span\n  File \"/app/app/main.py\", line 174, in get_order\n    return order_detail(row)\n           ^^^^^^^^^^^^^^^^^\n  File \"/app/app/main.py\", line 67, in order_detail\n    estimated_at = placed_at.replace(day=placed_at.day + 2)\n                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nValueError: day is out of range for month\n",
+                  "exception.escaped": "False"
+                }
+              }
+            ]
+          }
+        ],
+        "has_errors": true
+      },
+      {
+        "trace_id": "c2aeff962e550dbd81e66a97aa544514",
+        "spans_count": 1,
+        "spans": [
+          {
+            "span_id": "0tRyKYZi8zk=",
+            "parent_span_id": null,
+            "name": "order_lookup",
+            "scope": "order-tracker",
+            "service": "order-tracker",
+            "duration_ms": 4.33,
+            "status": {
+              "code": "STATUS_CODE_ERROR",
+              "message": "ValueError: day is out of range for month"
+            },
+            "attributes": {
+              "order.id": "express-1002",
+              "route": "/api/orders/{order_id}",
+              "http.route": "/api/orders/{order_id}",
+              "order.found": true,
+              "order.status": "preparing",
+              "order.priority": "express",
+              "status_code": "500",
+              "http.status_code": "500"
+            },
+            "events": [
+              {
+                "name": "exception",
+                "attributes": {
+                  "exception.type": "ValueError",
+                  "exception.message": "day is out of range for month",
+                  "exception.stacktrace": "Traceback (most recent call last):\n  File \"/app/.venv/lib/python3.12/site-packages/opentelemetry/trace/__init__.py\", line 602, in use_span\n    yield span\n  File \"/app/.venv/lib/python3.12/site-packages/opentelemetry/sdk/trace/__init__.py\", line 1136, in start_as_current_span\n    yield span\n  File \"/app/app/main.py\", line 174, in get_order\n    return order_detail(row)\n           ^^^^^^^^^^^^^^^^^\n  File \"/app/app/main.py\", line 67, in order_detail\n    estimated_at = placed_at.replace(day=placed_at.day + 2)\n                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nValueError: day is out of range for month\n",
+                  "exception.escaped": "False"
+                }
+              }
+            ]
+          }
+        ],
+        "has_errors": true
+      },
+      {
+        "trace_id": "d84ff99f7961000dbac5520d6e5c5e02",
+        "spans_count": 1,
+        "spans": [
+          {
+            "span_id": "JwlX6Wpc5XQ=",
+            "parent_span_id": null,
+            "name": "order_lookup",
+            "scope": "order-tracker",
+            "service": "order-tracker",
+            "duration_ms": 1.91,
+            "status": {
+              "code": "STATUS_CODE_ERROR",
+              "message": "ValueError: day is out of range for month"
+            },
+            "attributes": {
+              "order.id": "express-1002",
+              "route": "/api/orders/{order_id}",
+              "http.route": "/api/orders/{order_id}",
+              "order.found": true,
+              "order.status": "preparing",
+              "order.priority": "express",
+              "status_code": "500",
+              "http.status_code": "500"
+            },
+            "events": [
+              {
+                "name": "exception",
+                "attributes": {
+                  "exception.type": "ValueError",
+                  "exception.message": "day is out of range for month",
+                  "exception.stacktrace": "Traceback (most recent call last):\n  File \"/app/.venv/lib/python3.12/site-packages/opentelemetry/trace/__init__.py\", line 602, in use_span\n    yield span\n  File \"/app/.venv/lib/python3.12/site-packages/opentelemetry/sdk/trace/__init__.py\", line 1136, in start_as_current_span\n    yield span\n  File \"/app/app/main.py\", line 174, in get_order\n    return order_detail(row)\n           ^^^^^^^^^^^^^^^^^\n  File \"/app/app/main.py\", line 67, in order_detail\n    estimated_at = placed_at.replace(day=placed_at.day + 2)\n                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nValueError: day is out of range for month\n",
+                  "exception.escaped": "False"
+                }
+              }
+            ]
+          }
+        ],
+        "has_errors": true
+      },
+      {
+        "trace_id": "77a0a7c015b86bc5285cdbc30fd83915",
+        "spans_count": 1,
+        "spans": [
+          {
+            "span_id": "wqJkD3AAH1g=",
+            "parent_span_id": null,
+            "name": "order_lookup",
+            "scope": "order-tracker",
+            "service": "order-tracker",
+            "duration_ms": 2.23,
+            "status": {
+              "code": "STATUS_CODE_ERROR",
+              "message": "ValueError: day is out of range for month"
+            },
+            "attributes": {
+              "order.id": "express-1002",
+              "route": "/api/orders/{order_id}",
+              "http.route": "/api/orders/{order_id}",
+              "order.found": true,
+              "order.status": "preparing",
+              "order.priority": "express",
+              "status_code": "500",
+              "http.status_code": "500"
+            },
+            "events": [
+              {
+                "name": "exception",
+                "attributes": {
+                  "exception.type": "ValueError",
+                  "exception.message": "day is out of range for month",
+                  "exception.stacktrace": "Traceback (most recent call last):\n  File \"/app/.venv/lib/python3.12/site-packages/opentelemetry/trace/__init__.py\", line 602, in use_span\n    yield span\n  File \"/app/.venv/lib/python3.12/site-packages/opentelemetry/sdk/trace/__init__.py\", line 1136, in start_as_current_span\n    yield span\n  File \"/app/app/main.py\", line 174, in get_order\n    return order_detail(row)\n           ^^^^^^^^^^^^^^^^^\n  File \"/app/app/main.py\", line 67, in order_detail\n    estimated_at = placed_at.replace(day=placed_at.day + 2)\n                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nValueError: day is out of range for month\n",
+                  "exception.escaped": "False"
+                }
+              }
+            ]
+          }
+        ],
+        "has_errors": true
+      },
+      {
+        "trace_id": "39df81422a39046ebf4e952d2fd0f64c",
+        "spans_count": 1,
+        "spans": [
+          {
+            "span_id": "USQ3V6yTQ2k=",
+            "parent_span_id": null,
+            "name": "order_lookup",
+            "scope": "order-tracker",
+            "service": "order-tracker",
+            "duration_ms": 4.5,
+            "status": {
+              "code": null,
+              "message": null
+            },
+            "attributes": {
+              "order.id": "standard-1001",
+              "route": "/api/orders/{order_id}",
+              "http.route": "/api/orders/{order_id}",
+              "order.found": true,
+              "order.status": "received",
+              "order.priority": "standard",
+              "status_code": "200",
+              "http.status_code": "200"
+            },
+            "events": []
+          }
+        ],
+        "has_errors": false
+      },
+      {
+        "trace_id": "1e0fa4ff9d4e73264fcbe454b6c0c6f0",
+        "spans_count": 1,
+        "spans": [
+          {
+            "span_id": "Rp0YBVCT2LQ=",
+            "parent_span_id": null,
+            "name": "order_lookup",
+            "scope": "order-tracker",
+            "service": "order-tracker",
+            "duration_ms": 2.86,
+            "status": {
+              "code": "STATUS_CODE_ERROR",
+              "message": "ValueError: day is out of range for month"
+            },
+            "attributes": {
+              "order.id": "express-1002",
+              "route": "/api/orders/{order_id}",
+              "http.route": "/api/orders/{order_id}",
+              "order.found": true,
+              "order.status": "preparing",
+              "order.priority": "express",
+              "status_code": "500",
+              "http.status_code": "500"
+            },
+            "events": [
+              {
+                "name": "exception",
+                "attributes": {
+                  "exception.type": "ValueError",
+                  "exception.message": "day is out of range for month",
+                  "exception.stacktrace": "Traceback (most recent call last):\n  File \"/app/.venv/lib/python3.12/site-packages/opentelemetry/trace/__init__.py\", line 602, in use_span\n    yield span\n  File \"/app/.venv/lib/python3.12/site-packages/opentelemetry/sdk/trace/__init__.py\", line 1136, in start_as_current_span\n    yield span\n  File \"/app/app/main.py\", line 174, in get_order\n    return order_detail(row)\n           ^^^^^^^^^^^^^^^^^\n  File \"/app/app/main.py\", line 67, in order_detail\n    estimated_at = placed_at.replace(day=placed_at.day + 2)\n                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nValueError: day is out of range for month\n",
+                  "exception.escaped": "False"
+                }
+              }
+            ]
+          }
+        ],
+        "has_errors": true
+      },
+      {
+        "trace_id": "7b52c45ea97eeda48a2dbdf54a9a4a25",
+        "spans_count": 1,
+        "spans": [
+          {
+            "span_id": "cdqAHAM6/SE=",
+            "parent_span_id": null,
+            "name": "order_lookup",
+            "scope": "order-tracker",
+            "service": "order-tracker",
+            "duration_ms": 2.67,
+            "status": {
+              "code": "STATUS_CODE_ERROR",
+              "message": "ValueError: day is out of range for month"
+            },
+            "attributes": {
+              "order.id": "express-1002",
+              "route": "/api/orders/{order_id}",
+              "http.route": "/api/orders/{order_id}",
+              "order.found": true,
+              "order.status": "preparing",
+              "order.priority": "express",
+              "status_code": "500",
+              "http.status_code": "500"
+            },
+            "events": [
+              {
+                "name": "exception",
+                "attributes": {
+                  "exception.type": "ValueError",
+                  "exception.message": "day is out of range for month",
+                  "exception.stacktrace": "Traceback (most recent call last):\n  File \"/app/.venv/lib/python3.12/site-packages/opentelemetry/trace/__init__.py\", line 602, in use_span\n    yield span\n  File \"/app/.venv/lib/python3.12/site-packages/opentelemetry/sdk/trace/__init__.py\", line 1136, in start_as_current_span\n    yield span\n  File \"/app/app/main.py\", line 174, in get_order\n    return order_detail(row)\n           ^^^^^^^^^^^^^^^^^\n  File \"/app/app/main.py\", line 67, in order_detail\n    estimated_at = placed_at.replace(day=placed_at.day + 2)\n                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nValueError: day is out of range for month\n",
+                  "exception.escaped": "False"
+                }
+              }
+            ]
+          }
+        ],
+        "has_errors": true
+      },
+      {
+        "trace_id": "fc91ab1f15cf1beddffa227a76cd29a7",
+        "spans_count": 1,
+        "spans": [
+          {
+            "span_id": "G4tSwEu9wsc=",
+            "parent_span_id": null,
+            "name": "order_lookup",
+            "scope": "order-tracker",
+            "service": "order-tracker",
+            "duration_ms": 42.83,
+            "status": {
+              "code": "STATUS_CODE_ERROR",
+              "message": "ValueError: day is out of range for month"
+            },
+            "attributes": {
+              "order.id": "express-1002",
+              "route": "/api/orders/{order_id}",
+              "http.route": "/api/orders/{order_id}",
+              "order.found": true,
+              "order.status": "preparing",
+              "order.priority": "express",
+              "status_code": "500",
+              "http.status_code": "500"
+            },
+            "events": [
+              {
+                "name": "exception",
+                "attributes": {
+                  "exception.type": "ValueError",
+                  "exception.message": "day is out of range for month",
+                  "exception.stacktrace": "Traceback (most recent call last):\n  File \"/app/.venv/lib/python3.12/site-packages/opentelemetry/trace/__init__.py\", line 602, in use_span\n    yield span\n  File \"/app/.venv/lib/python3.12/site-packages/opentelemetry/sdk/trace/__init__.py\", line 1136, in start_as_current_span\n    yield span\n  File \"/app/app/main.py\", line 174, in get_order\n    return order_detail(row)\n           ^^^^^^^^^^^^^^^^^\n  File \"/app/app/main.py\", line 67, in order_detail\n    estimated_at = placed_at.replace(day=placed_at.day + 2)\n                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nValueError: day is out of range for month\n",
+                  "exception.escaped": "False"
+                }
+              }
+            ]
+          }
+        ],
+        "has_errors": true
+      },
+      {
+        "trace_id": "bb6040d06781b1e525ca80b5c272045d",
+        "spans_count": 1,
+        "spans": [
+          {
+            "span_id": "80FpghvjDBw=",
+            "parent_span_id": null,
+            "name": "order_lookup",
+            "scope": "order-tracker",
+            "service": "order-tracker",
+            "duration_ms": 1.56,
+            "status": {
+              "code": "STATUS_CODE_ERROR",
+              "message": "ValueError: day is out of range for month"
+            },
+            "attributes": {
+              "order.id": "express-1002",
+              "route": "/api/orders/{order_id}",
+              "http.route": "/api/orders/{order_id}",
+              "order.found": true,
+              "order.status": "preparing",
+              "order.priority": "express",
+              "status_code": "500",
+              "http.status_code": "500"
+            },
+            "events": [
+              {
+                "name": "exception",
+                "attributes": {
+                  "exception.type": "ValueError",
+                  "exception.message": "day is out of range for month",
+                  "exception.stacktrace": "Traceback (most recent call last):\n  File \"/app/.venv/lib/python3.12/site-packages/opentelemetry/trace/__init__.py\", line 602, in use_span\n    yield span\n  File \"/app/.venv/lib/python3.12/site-packages/opentelemetry/sdk/trace/__init__.py\", line 1136, in start_as_current_span\n    yield span\n  File \"/app/app/main.py\", line 174, in get_order\n    return order_detail(row)\n           ^^^^^^^^^^^^^^^^^\n  File \"/app/app/main.py\", line 67, in order_detail\n    estimated_at = placed_at.replace(day=placed_at.day + 2)\n                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nValueError: day is out of range for month\n",
+                  "exception.escaped": "False"
+                }
+              }
+            ]
+          }
+        ],
+        "has_errors": true
+      },
+      {
+        "trace_id": "f272c80fc36e1fbdf27ff26d44aa87a5",
+        "spans_count": 1,
+        "spans": [
+          {
+            "span_id": "95vEDk2ftwc=",
+            "parent_span_id": null,
+            "name": "order_lookup",
+            "scope": "order-tracker",
+            "service": "order-tracker",
+            "duration_ms": 1.7,
+            "status": {
+              "code": "STATUS_CODE_ERROR",
+              "message": "ValueError: day is out of range for month"
+            },
+            "attributes": {
+              "order.id": "express-1002",
+              "route": "/api/orders/{order_id}",
+              "http.route": "/api/orders/{order_id}",
+              "order.found": true,
+              "order.status": "preparing",
+              "order.priority": "express",
+              "status_code": "500",
+              "http.status_code": "500"
+            },
+            "events": [
+              {
+                "name": "exception",
+                "attributes": {
+                  "exception.type": "ValueError",
+                  "exception.message": "day is out of range for month",
+                  "exception.stacktrace": "Traceback (most recent call last):\n  File \"/app/.venv/lib/python3.12/site-packages/opentelemetry/trace/__init__.py\", line 602, in use_span\n    yield span\n  File \"/app/.venv/lib/python3.12/site-packages/opentelemetry/sdk/trace/__init__.py\", line 1136, in start_as_current_span\n    yield span\n  File \"/app/app/main.py\", line 174, in get_order\n    return order_detail(row)\n           ^^^^^^^^^^^^^^^^^\n  File \"/app/app/main.py\", line 67, in order_detail\n    estimated_at = placed_at.replace(day=placed_at.day + 2)\n                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nValueError: day is out of range for month\n",
+                  "exception.escaped": "False"
+                }
+              }
+            ]
+          }
+        ],
+        "has_errors": true
+      },
+      {
+        "trace_id": "1a2cf97defc3a474547e8392f91f37e6",
+        "spans_count": 1,
+        "spans": [
+          {
+            "span_id": "6G79QRnOULc=",
+            "parent_span_id": null,
+            "name": "order_lookup",
+            "scope": "order-tracker",
+            "service": "order-tracker",
+            "duration_ms": 31.04,
+            "status": {
+              "code": "STATUS_CODE_ERROR",
+              "message": "HTTPException: 404: Order not found"
+            },
+            "attributes": {
+              "order.id": "standard-1002",
+              "route": "/api/orders/{order_id}",
+              "http.route": "/api/orders/{order_id}",
+              "order.found": false,
+              "status_code": "404",
+              "http.status_code": "404"
+            },
+            "events": [
+              {
+                "name": "exception",
+                "attributes": {
+                  "exception.type": "fastapi.exceptions.HTTPException",
+                  "exception.message": "404: Order not found",
+                  "exception.stacktrace": "Traceback (most recent call last):\n  File \"/app/.venv/lib/python3.12/site-packages/opentelemetry/trace/__init__.py\", line 602, in use_span\n    yield span\n  File \"/app/.venv/lib/python3.12/site-packages/opentelemetry/sdk/trace/__init__.py\", line 1136, in start_as_current_span\n    yield span\n  File \"/app/app/main.py\", line 165, in get_order\n    raise HTTPException(404, \"Order not found\")\nfastapi.exceptions.HTTPException: 404: Order not found\n",
+                  "exception.escaped": "False"
+                }
+              }
+            ]
+          }
+        ],
+        "has_errors": true
+      },
+      {
+        "trace_id": "61d6cd1f5491034fe188dad8a3beca7f",
+        "spans_count": 1,
+        "spans": [
+          {
+            "span_id": "hl8HNt+Aq6E=",
+            "parent_span_id": null,
+            "name": "order_lookup",
+            "scope": "order-tracker",
+            "service": "order-tracker",
+            "duration_ms": 2.36,
+            "status": {
+              "code": "STATUS_CODE_ERROR",
+              "message": "ValueError: day is out of range for month"
+            },
+            "attributes": {
+              "order.id": "express-1002",
+              "route": "/api/orders/{order_id}",
+              "http.route": "/api/orders/{order_id}",
+              "order.found": true,
+              "order.status": "preparing",
+              "order.priority": "express",
+              "status_code": "500",
+              "http.status_code": "500"
+            },
+            "events": [
+              {
+                "name": "exception",
+                "attributes": {
+                  "exception.type": "ValueError",
+                  "exception.message": "day is out of range for month",
+                  "exception.stacktrace": "Traceback (most recent call last):\n  File \"/app/.venv/lib/python3.12/site-packages/opentelemetry/trace/__init__.py\", line 602, in use_span\n    yield span\n  File \"/app/.venv/lib/python3.12/site-packages/opentelemetry/sdk/trace/__init__.py\", line 1136, in start_as_current_span\n    yield span\n  File \"/app/app/main.py\", line 174, in get_order\n    return order_detail(row)\n           ^^^^^^^^^^^^^^^^^\n  File \"/app/app/main.py\", line 67, in order_detail\n    estimated_at = placed_at.replace(day=placed_at.day + 2)\n                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nValueError: day is out of range for month\n",
+                  "exception.escaped": "False"
+                }
+              }
+            ]
+          }
+        ],
+        "has_errors": true
+      },
+      {
+        "trace_id": "f701c2178d378a2f55ae7ae9f9f93b2f",
+        "spans_count": 1,
+        "spans": [
+          {
+            "span_id": "kpIfkCyyjfs=",
+            "parent_span_id": null,
+            "name": "order_lookup",
+            "scope": "order-tracker",
+            "service": "order-tracker",
+            "duration_ms": 2.88,
+            "status": {
+              "code": "STATUS_CODE_ERROR",
+              "message": "ValueError: day is out of range for month"
+            },
+            "attributes": {
+              "order.id": "express-1002",
+              "route": "/api/orders/{order_id}",
+              "http.route": "/api/orders/{order_id}",
+              "order.found": true,
+              "order.status": "preparing",
+              "order.priority": "express",
+              "status_code": "500",
+              "http.status_code": "500"
+            },
+            "events": [
+              {
+                "name": "exception",
+                "attributes": {
+                  "exception.type": "ValueError",
+                  "exception.message": "day is out of range for month",
+                  "exception.stacktrace": "Traceback (most recent call last):\n  File \"/app/.venv/lib/python3.12/site-packages/opentelemetry/trace/__init__.py\", line 602, in use_span\n    yield span\n  File \"/app/.venv/lib/python3.12/site-packages/opentelemetry/sdk/trace/__init__.py\", line 1136, in start_as_current_span\n    yield span\n  File \"/app/app/main.py\", line 174, in get_order\n    return order_detail(row)\n           ^^^^^^^^^^^^^^^^^\n  File \"/app/app/main.py\", line 67, in order_detail\n    estimated_at = placed_at.replace(day=placed_at.day + 2)\n                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nValueError: day is out of range for month\n",
+                  "exception.escaped": "False"
+                }
+              }
+            ]
+          }
+        ],
+        "has_errors": true
+      }
+    ],
+    "discovered_trace_ids": [
+      "25858ce4dde1e8d762cb64a633d5d8ba",
+      "c2aeff962e550dbd81e66a97aa544514",
+      "d84ff99f7961000dbac5520d6e5c5e02",
+      "77a0a7c015b86bc5285cdbc30fd83915",
+      "39df81422a39046ebf4e952d2fd0f64c",
+      "1e0fa4ff9d4e73264fcbe454b6c0c6f0",
+      "7b52c45ea97eeda48a2dbdf54a9a4a25",
+      "fc91ab1f15cf1beddffa227a76cd29a7",
+      "bb6040d06781b1e525ca80b5c272045d",
+      "f272c80fc36e1fbdf27ff26d44aa87a5",
+      "1a2cf97defc3a474547e8392f91f37e6",
+      "61d6cd1f5491034fe188dad8a3beca7f",
+      "f701c2178d378a2f55ae7ae9f9f93b2f"
+    ]
+  }
+}

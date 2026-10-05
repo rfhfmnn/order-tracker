@@ -5,9 +5,18 @@ from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from uuid import uuid4
 
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Request
 from fastapi.responses import FileResponse
 from pydantic import BaseModel, Field
+from opentelemetry import trace
+
+from app.telemetry import (
+    flush_telemetry,
+    http_requests_counter,
+    logger,
+    order_lookup_requests_counter,
+    tracer,
+)
 
 
 DB_PATH = Path(os.getenv("ORDER_DB_PATH", "data/orders.db"))
@@ -55,7 +64,7 @@ def order_detail(row):
     order = as_dict(row)
     if order["priority"] == "express":
         placed_at = datetime.fromisoformat(order["created_at"])
-        estimated_at = placed_at.replace(day=placed_at.day + 2)
+        estimated_at = placed_at + timedelta(days=2)
         order["estimated_delivery"] = estimated_at.date().isoformat()
     return order
 
@@ -74,9 +83,41 @@ class StatusUpdate(BaseModel):
 async def lifespan(_app: FastAPI):
     init_db()
     yield
+    flush_telemetry()
 
 
 app = FastAPI(title="Order Tracker", lifespan=lifespan)
+
+
+@app.middleware("http")
+async def track_requests(request: Request, call_next):
+    status_code = 500
+    try:
+        response = await call_next(request)
+        status_code = response.status_code
+        return response
+    except HTTPException as exc:
+        status_code = exc.status_code
+        raise
+    except Exception:
+        status_code = 500
+        raise
+    finally:
+        route = request.scope.get("route")
+        route_path = route.path if route else request.url.path
+        if route_path != "/healthz":
+            attrs = {
+                "route": route_path,
+                "http.route": route_path,
+                "status_code": status_code,
+                "http.status_code": status_code,
+                "method": request.method,
+                "http.method": request.method,
+            }
+            http_requests_counter.add(1, attrs)
+            if route_path.startswith("/api/orders"):
+                order_lookup_requests_counter.add(1, attrs)
+            flush_telemetry()
 
 
 @app.get("/")
@@ -93,18 +134,50 @@ def health():
 
 @app.get("/api/orders")
 def list_orders():
-    with connect() as db:
-        rows = db.execute("SELECT * FROM orders ORDER BY created_at DESC").fetchall()
-    return [as_dict(row) for row in rows]
+    with tracer.start_as_current_span("list_orders") as span:
+        span.set_attribute("route", "/api/orders")
+        span.set_attribute("http.route", "/api/orders")
+        logger.info("Listing all orders")
+        with connect() as db:
+            rows = db.execute("SELECT * FROM orders ORDER BY created_at DESC").fetchall()
+        span.set_attribute("order.count", len(rows))
+        span.set_attribute("status_code", 200)
+        span.set_attribute("http.status_code", 200)
+        logger.info("Retrieved %d orders", len(rows))
+        return [as_dict(row) for row in rows]
 
 
 @app.get("/api/orders/{order_id}")
 def get_order(order_id: str):
-    with connect() as db:
-        row = db.execute("SELECT * FROM orders WHERE id = ?", (order_id,)).fetchone()
-    if row is None:
-        raise HTTPException(404, "Order not found")
-    return order_detail(row)
+    with tracer.start_as_current_span("order_lookup") as span:
+        span.set_attribute("order.id", order_id)
+        span.set_attribute("route", "/api/orders/{order_id}")
+        span.set_attribute("http.route", "/api/orders/{order_id}")
+        logger.info("Looking up order: %s", order_id)
+        with connect() as db:
+            row = db.execute("SELECT * FROM orders WHERE id = ?", (order_id,)).fetchone()
+        if row is None:
+            span.set_attribute("order.found", False)
+            span.set_attribute("status_code", 404)
+            span.set_attribute("http.status_code", 404)
+            span.set_status(trace.StatusCode.ERROR, "Order not found")
+            logger.warning("Order not found: %s", order_id)
+            raise HTTPException(404, "Order not found")
+
+        span.set_attribute("order.found", True)
+        span.set_attribute("order.status", row["status"])
+        span.set_attribute("order.priority", row["priority"])
+        span.set_attribute("status_code", 200)
+        span.set_attribute("http.status_code", 200)
+        logger.info("Found order %s: status=%s, priority=%s", order_id, row["status"], row["priority"])
+        try:
+            return order_detail(row)
+        except Exception as exc:
+            span.set_attribute("status_code", 500)
+            span.set_attribute("http.status_code", 500)
+            span.set_status(trace.StatusCode.ERROR, str(exc))
+            logger.error("Error retrieving order details for %s: %s", order_id, exc, exc_info=True)
+            raise
 
 
 @app.post("/api/orders", status_code=201)
